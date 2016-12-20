@@ -1,0 +1,14 @@
+Binary Search:
+search in a sorted sequence (array, arraylist, vector) for a target. O(logN)
+
+key point for binary search:
+partition the sequence to two halves by "mid"
+determine the answer should be guaranteed to be in / not in one of the halves.
+there has to be a comparison operation about "mid" element
+    compare to target
+    compare to left most
+    compare to right most
+    compare to neighbor
+
+1. we can guarantee mid is or is not the answer
+   bianry search
