@@ -15,7 +15,15 @@
 
 #include "Header.h"
 
-// find largest number smaller than target
+/*
+ 下面的做法适用于has non-dup or dup elements.
+ Find the largest smaller than the target, suppose the answer(its index) is i, then the insert position should be i+1
+ we should guarantee the answer is always in [left, right]
+ what are all the posible cases after while() loop is exited:
+ left <= right < target
+ left < target <= right
+ target <= left <= right
+ */
 int find_insert_pos(vector<int> nums, int target){
     if(nums.empty()){
         return -1;
