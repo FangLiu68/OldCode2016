@@ -15,6 +15,37 @@
 
 #include "Header.h"
 
+// find largest number smaller than target
+int find_insert_pos(vector<int> nums, int target){
+    if(nums.empty()){
+        return -1;
+    }
+    
+    int left = 0;
+    int right = nums.size() - 1;
+    
+    while(left+1 < right){
+        int mid = left + (right-left)/2;
+        if(nums[mid] < target){
+            left = mid;
+        }else if(nums[mid] > target){
+            right = mid-1;
+        }else{
+            right = mid-1;
+        }
+    }
+    
+    // 包含了size()==1的情况
+    if(nums[right] < target){
+        return right+1;
+    }else if(nums[left] >= target){
+        return left;
+    }else{
+        return right;
+    }
+}
+
+/*
 int find_insert_pos(vector<int> input, int target){
     // corner case
     if(input.size() == 0){
@@ -38,28 +69,4 @@ int find_insert_pos(vector<int> input, int target){
     
     return left;
 }
-
-int find_insert_pos2(vector<int> input, int target){
-    // corner case
-    if(input.size() == 0){
-        return 0;
-    }
-    if(input.size() == 1){
-        return input[0] >= target? 0 : 1;
-    }
-    int left = 0;
-    int right = input.size()-1;
-    
-    while(left < right-1){
-        int mid = left + (right-left)/2;
-        if(input[mid] >= target){
-            right = mid;
-        }else{
-            left = mid;
-        }
-    }
-    if(input[left] >= target){
-        return left;
-    }
-    return input[right] >= target? right:right+1;
-}
+*/

@@ -18,7 +18,6 @@
 		97080B071A6AFEA5007B809D /* Max Elem in Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B061A6AFEA5007B809D /* Max Elem in Window.cpp */; };
 		97080B091A6B1AF4007B809D /* First Non-Repeating Char in Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B081A6B1AF4007B809D /* First Non-Repeating Char in Stream.cpp */; };
 		97080B0B1A6B3798007B809D /* Majority Num.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B0A1A6B3798007B809D /* Majority Num.cpp */; };
-		97080B0D1A6B4E22007B809D /* TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B0C1A6B4E22007B809D /* TEST.cpp */; };
 		97080B0F1A6C6B9B007B809D /* Could be Merged by Two Arr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B0E1A6C6B9B007B809D /* Could be Merged by Two Arr.cpp */; };
 		97080B131A6C702B007B809D /* Reconstruct Bianry Tree With pre_in Order.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B121A6C702B007B809D /* Reconstruct Bianry Tree With pre_in Order.cpp */; };
 		97080B151A6C70E7007B809D /* Reconstruct Binary Tree With post_in Order.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97080B141A6C70E7007B809D /* Reconstruct Binary Tree With post_in Order.cpp */; };
@@ -489,7 +488,6 @@
 		97080B061A6AFEA5007B809D /* Max Elem in Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Max Elem in Window.cpp"; sourceTree = "<group>"; };
 		97080B081A6B1AF4007B809D /* First Non-Repeating Char in Stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "First Non-Repeating Char in Stream.cpp"; sourceTree = "<group>"; };
 		97080B0A1A6B3798007B809D /* Majority Num.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Majority Num.cpp"; sourceTree = "<group>"; };
-		97080B0C1A6B4E22007B809D /* TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TEST.cpp; path = LaiOffer/TEST.cpp; sourceTree = "<group>"; };
 		97080B0E1A6C6B9B007B809D /* Could be Merged by Two Arr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Could be Merged by Two Arr.cpp"; sourceTree = "<group>"; };
 		97080B121A6C702B007B809D /* Reconstruct Bianry Tree With pre_in Order.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Reconstruct Bianry Tree With pre_in Order.cpp"; sourceTree = "<group>"; };
 		97080B141A6C70E7007B809D /* Reconstruct Binary Tree With post_in Order.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Reconstruct Binary Tree With post_in Order.cpp"; sourceTree = "<group>"; };
@@ -1296,7 +1294,6 @@
 			isa = PBXGroup;
 			children = (
 				97619D161A58E9B500133E44 /* main.cpp */,
-				97080B0C1A6B4E22007B809D /* TEST.cpp */,
 				E3AC0D851D3E81C200CE7A16 /* JJ1 */,
 				97619D151A58E9B500133E44 /* LaiOffer */,
 				97619D141A58E9B500133E44 /* Products */,
@@ -2285,7 +2282,6 @@
 				97EED4441A916AB70094BB6C /* Generate Parentheses .cpp in Sources */,
 				97D02BA01AB76FE400C73F56 /* Find Lowest Node in Binary Tree.cpp in Sources */,
 				97D02BC41AB775AA00C73F56 /* Reverse Alternate Nodes in List and Append at End.cpp in Sources */,
-				97080B0D1A6B4E22007B809D /* TEST.cpp in Sources */,
 				E350ACE81CD586DB00DEE037 /* Graph Valid Tree.cpp in Sources */,
 				978AAA481A9CF61D00ED046A /* 2D Liner Search.cpp in Sources */,
 				97D02B901AB76C5E00C73F56 /* Find Order of Chars in Dic.cpp in Sources */,

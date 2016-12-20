@@ -48,25 +48,3 @@ int searchInsert1(vector<int> input, int target) {
     return right;
 }
 
-// 和binary search 一样，不过最后返回的是left. 和下个题不同，仔细看
-int searchInsert(vector<int>& nums, int target) {
-    if(nums.empty()){
-        return 0;
-    }
-    
-    int left = 0;
-    int right = nums.size() - 1;
-    
-    while(left <= right){
-        int mid = left + (right - left)/2;
-        if(nums[mid] == target){
-            return mid;
-        }else if(nums[mid] < target){
-            left = mid+1;
-        }else{
-            right = mid-1;
-        }
-    }
-    
-    return left;
-}
