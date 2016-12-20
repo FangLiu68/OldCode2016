@@ -16,6 +16,11 @@
  worst: T(n) = T(n - 1) + O(n) = O(n * n)
  
  find k-th smallest element, then when this element in sorted sequence its index should be (k-1)
+ 
+ complexity:
+ everage O(n), worst case O(n^2)
+ -----------k-----------
+ 之前每次取pivot都在K之前，然后每次取pivot都在k之后，那么就一共取了N次pivot，而每次取了pivot之后排序都是需要O(N)，所以最差情况是O(N^2)
  */
 
 #include <iostream>

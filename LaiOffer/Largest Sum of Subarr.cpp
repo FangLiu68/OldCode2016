@@ -14,6 +14,9 @@
 using namespace std;
 
 /*
+ largestSum[i] = in subarray(0, i), the largest sum of the subarray ending at index i
+ largestSum[i] = max(array[i], largestSum[i-1]+array[i])
+ 
  Base case: only element M[0] = A[0]
  Induction rule: Define M[i]
  M[i] represents the largest possible sum from A[0] to A[i] (including A[i])
@@ -25,6 +28,45 @@ using namespace std;
  M[] = 1  3  7	 6   4	 -6  -1  2  6  13
  */
 
+// use size N array to store result ending at i
+// record[i] = the largest sum of subarray ending at index i
+// space complaxity O(N), time complexity O(N)
+int maxSubArray(vector<int>& nums) {
+    if(nums.empty()){
+        return INT_MIN;
+    }
+    
+    vector<int> record(nums.size(), 0);
+    record[0] = nums[0];
+    int res = record[0];
+    
+    for(int i=1; i<nums.size(); ++i){
+        record[i] = max(record[i-1]+nums[i], nums[i]);
+        res = max(res, record[i]);
+    }
+    
+    return res;
+}
+
+// optimize the previous solution
+// space complaxity O(1), time complaxity O(N)
+int maxSubArray_optimize(vector<int>& nums){
+    if(nums.empty()){
+        return INT_MIN;
+    }
+    
+    int cur_max = nums[0];
+    int res = cur_max;
+    
+    for(int i=1; i<nums.size(); ++i){
+        cur_max = max(cur_max + nums[i], nums[i]);
+        res = max(res, cur_max);
+    }
+    
+    return res;
+}
+
+////////////////////////////////////////////////////////////////
 int largestSum(vector<int> input){
     if(input.empty()){
         return INT_MIN;

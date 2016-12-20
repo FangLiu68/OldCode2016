@@ -8,13 +8,7 @@
 
 /*
  Given a Binary Tree, print Right view of it. Right view of a Binary Tree is set of nodes visible when tree is visited from Right side.
- */
-
-#include "BinaryTree.h"
-#include <iostream>
-using namespace std;
-
-/*
+ 
         1
       /  \
     2      3
@@ -22,7 +16,19 @@ using namespace std;
       4  5
      /
     6
- 
+ right view: 1 3 5 6
+ */
+
+#include "Header.h"
+
+
+/*
+ two ways:
+ BFS, right to left
+ DFS, pre/post/in, right to left
+ */
+
+/*
  Node   cur     max     print       change_max_to
  1      1       0           1           1
  3      2       1           3           2

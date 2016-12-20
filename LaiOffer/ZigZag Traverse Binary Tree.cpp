@@ -56,6 +56,7 @@ vector<int> zigzag_level_traverse(BinaryTreeNode* root) {
                 if(tmp->right) qu.push_back(tmp->right);
             }
         }
+        
         right_to_left = !right_to_left;
     }
     return res;

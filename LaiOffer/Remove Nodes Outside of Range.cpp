@@ -48,6 +48,25 @@ BinaryTreeNode* remove_outOfRange(BinaryTreeNode* root, int min, int max){
         return root;
     }
 }
+
+BinaryTreeNode* retain_range(BinaryTreeNode* root, int min, int max){
+    if(root == NULL){
+        return NULL;
+    }
+    
+    root->left = retain_range(root->left, min, max);
+    root->right = retain_range(root->right, min, max);
+    
+    if(root->val < min || root->val > max){
+        if(root->left == NULL){
+            return root->right;
+        }else{
+            return root->left;
+        }
+    }
+    
+    return root;
+}
 /*
 int main(){
     BinaryTreeNode* root = new BinaryTreeNode(5);

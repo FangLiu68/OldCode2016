@@ -18,7 +18,24 @@
                       意思是，对于不存在的，放入当前pair；对于存在过的，更新其mp[nums[i]]的值 为当前最新(最近)的index值
  O(N) time, O(N) space
  */
+
 bool containsNearbyDuplicate(vector<int>& nums, int k) {
+    if(nums.empty()) return false;
+    
+    unordered_map<int, int> mp; // nums[i], i
+    
+    for(int i=0; i<nums.size(); ++i){
+        if(mp.find(nums[i]) != mp.end()){
+            if(abs(i-mp[nums[i]]) <= k){
+                return true;
+            }
+        }
+        mp[nums[i]] = i;
+    }
+    
+    return false;
+}
+bool containsNearbyDuplicate1(vector<int>& nums, int k) {
     if(nums.empty()) return false;
     unordered_map<int, int> mp; // key: nums[i]; value: i
     mp[nums[0]] = 0;

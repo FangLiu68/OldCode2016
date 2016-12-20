@@ -35,23 +35,23 @@ int closet_num_in_BST(BinaryTreeNode* root, int target) {
     }
     int min_diff = INT_MAX;
     BinaryTreeNode* res = root;
-    while(1){
+    
+    while(root){
         int cur_diff = abs(root->val - target);
         if(cur_diff < min_diff){
-            min_diff = abs(cur_diff);
+            min_diff = cur_diff;
             res = root;
         }
-        if(target < root->val){
-            root = root->left;
-        }else if(target > root->val){
+        
+        if(root->val < target){
             root = root->right;
+        }else if(root->val > target){
+            root = root->left;
         }else{
             return root->val;
         }
-        if(root == NULL){
-            break;
-        }
     }
+    
     return res->val;
 }
 

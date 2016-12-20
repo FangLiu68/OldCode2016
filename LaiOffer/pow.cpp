@@ -16,7 +16,8 @@ long power(int a, int b) {
     if(b == 0){
         return 1; // base case
     }
-    long half = power(a, b/2);
+    long half = power(a, b/2); // 要先把half这样表示出来，如果跳过这一步，下面会溢出（不知道为啥）
+    
     if(b%2==0){
         return half*half;
     }else{

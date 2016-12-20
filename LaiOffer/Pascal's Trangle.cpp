@@ -31,6 +31,14 @@
 using namespace std;
 
 // O(n^2) runtime, O(n) space
+/*
+ 1. push the first row into result
+ 2. from second row to numRows, iterate to create new rows
+    there are total numRows elements in each row
+    and we initiate all number as value 1
+ 3. for each row, except first and last element, cur[j] = pre[j-1] + pre[j]
+    since there are total i elements on each row, so last element index is i-1, so j vary from [1, i-1)
+ */
 vector < vector <int> > generate(int numRows){
     vector < vector <int> > res;
     res.push_back(vector <int>(1,1)); // first row

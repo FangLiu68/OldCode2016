@@ -37,7 +37,12 @@ void helper_permutation_noDup(string& input, vector<string>& res, int index){
         res.push_back(input);
         return;
     }
-
+    for(int i=index; i<input.size(); ++i){
+        swap_permuI(input, index, i);
+        helper_permutation_noDup(input, res, index+1);
+        swap_permuI(input, index, i);
+    }
+}
     // 把index后面的所有字符都和i位置上的字符互换
     // put each letter in the index-th position of the input str.
     /*
@@ -52,6 +57,7 @@ void helper_permutation_noDup(string& input, vector<string>& res, int index){
                |       |       |         |       |       |
              sp(2,2)  sp(2,2)  sp(2,2)  sp(2,2)  sp(2,2) sp(2,2)
      level2  (abc)   (acb)     (bac)     (bca)    (cba)   (cab)
+     
      level3   print
      
      由上图可见，最开始每个点叉出3格状态，每层递减，最后一层每个点只叉出1个状态
@@ -70,14 +76,10 @@ void helper_permutation_noDup(string& input, vector<string>& res, int index){
      DFS的程序将要call自己几次，就表明他有几层
      写在base case下面的这几个状态（for()循环），就表明每层上的每个节点将要叉出几个状态
      当叉出的状态数不能确定，状态数与层数有关时，就用for()循环来做
+     
+     递归函数必须保证在进入和离开函数的时候，变量的状态是一样的，这样才能保证正确性
      */
-    for(int i=index; i<input.size(); ++i){
-        swap_permuI(input, index, i);
-        helper_permutation_noDup(input, res, index+1);
-        swap_permuI(input, index, i);
-    }
-}
-
+    
 void swap_permuI(string& input, int i, int index){
     if(i == index) return;
     char tmp = input[i];
@@ -85,13 +87,13 @@ void swap_permuI(string& input, int i, int index){
     input[index] = tmp;
 }
 
-/*
+
 int main(){
-    string input = "ab";
+    string input = "abc";
     vector<string> res = permutation_noDup(input);
     for(int i=0; i<res.size(); ++i){
         cout << res[i] << endl;
     }
     cout << endl;
     return 0;
-}*/
+}

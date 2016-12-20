@@ -45,6 +45,12 @@
 #include <queue>
 using namespace std;
 
+/*
+ 逐层遍历
+ 用queue存储节点，从左到右一个一个判断
+ 对于每一个节点，如果左孩子为NULL，就不应该有右孩子；在左孩子为NULL的同时如果有右孩子，则not complete tree
+ 我们用bool tag标志此时的左孩子是否为NULL
+ */
 bool is_completed_BT(BinaryTreeNode* root){
     if(root == NULL){
         return true;
@@ -62,10 +68,10 @@ bool is_completed_BT(BinaryTreeNode* root){
             // if there is no left child, then set flag = true
             // we should not see nodes later
             flag = true;
-        }else if(flag){
+        }else if(flag){ // 在flag==true的情况下cur->left != NULL
             // see "cur" after setting flag to true, BT is not completed
             return false;
-        }else{
+        }else{ // cur->left!=NULL && flag==false
             q.push(cur->left);
         }
         

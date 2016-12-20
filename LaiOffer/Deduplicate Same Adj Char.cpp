@@ -49,6 +49,7 @@ string deduplicate_same_adjacent_chars(string s){
     while(index_cur < s.size()){
         char cur = s[index_cur];
 
+        // 一定要先把size check放在前面
         if(stk.size() > 0 && cur == stk.top()){
             while(index_cur < s.size() && cur == s[index_cur])
                 index_cur++;

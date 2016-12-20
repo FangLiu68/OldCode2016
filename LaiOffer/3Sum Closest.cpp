@@ -21,49 +21,36 @@
 #include <vector>
 using namespace std;
 
-// O(N^2) runtime, O(1) space
-int threeSumClosest(vector<int> &num, int target) {
+// O(N^2) runtime, O(1) space 先排序，再左右夹逼
+int threeSumClosest(vector<int>& nums, int target) {
+    if(nums.size() < 3){
+        return INT_MIN;
+    }
+    
+    int close = INT_MAX;
     int res = 0;
-    int closet = INT_MAX;
-    sort(num.begin(), num.end());
-    for(int i=0; i<num.size(); i++){
-        int j = i+1;
-        int k = num.size()-1;
-        while(j < k){
-            int sum = num[i]+num[j]+num[k];
-            if(sum == target) return sum;
-
-            int gap = abs(target-sum);
-            if(gap < closet){
-                res = sum;
-                closet = gap;
+    
+    sort(nums.begin(), nums.end());
+    for(int i=0; i<nums.size(); ++i){
+        int start = i+1;
+        int end = nums.size()-1;
+        while(start < end){
+            int sum = nums[i] + nums[start] + nums[end];
+            if(sum == target){
+                return sum;
             }
-            if(sum < target) j++;
-            else if(sum > target) k--;
+            int gap = abs(target - sum);
+            if(gap < close){
+                close = gap;
+                res = sum;
+            }
+            if(sum < target){
+                start++;
+            }else{
+                end--;
+            }
         }
     }
-    return res;
-}
-
-// 先排序，然后左右夹逼。time complexity O(N^2), space complexity O(1)
-int threeSumClosest1(vector<int> &num, int target){
-    int closest = INT_MAX;
-    int res = 0;
-    sort(num.begin(), num.end());
-
-    for (int i = 0; i < num.size(); i++){
-        for (int j = i+1, k = num.size()-1; j < k; ){
-            int sum = num[i]+num[j]+num[k];
-            if (sum == target) return sum;
-            int t = abs(sum-target);
-            if (t<closest){
-                res = sum;
-                closest = t;
-            }
-            if (sum < target) j++;
-            else if (sum > target) k--;
-        }
-        while (i < num.size() && num[i] == num[i+1]) i++; // 这个不可少
-    }
+    
     return res;
 }

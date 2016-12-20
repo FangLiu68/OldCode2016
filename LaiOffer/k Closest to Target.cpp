@@ -39,4 +39,12 @@
 
  */
 
-// Method 1:
+/*
+ 1.find the closest node to target, as TreeNode c.
+ 2. TreeNode l - l < c
+ TreeNode r - r > c
+ for each round, move the closest one in l and r:
+	if l is closer than r: l = largest smaller than l
+ else:                      r = smallest larger than r
+ assuming balanced,  O(k * logn) = O(logn + (k-1)logn)
+ */

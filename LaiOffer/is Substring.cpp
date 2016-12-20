@@ -29,6 +29,9 @@ int strStr(string haystack, string needle) {
         return -1;
     }
     int index = 0;
+    
+    // index这里是从haystack的哪个位置开始比较needle
+    // "abc" "c"，则终止位置是index==2 (which is 'c')
     while(index <= haystack.size()-needle.size()){ // 注意是<=
         if(helper_match(haystack, index, needle)){
             return index;
@@ -99,5 +102,5 @@ int main(){
     cout << res;
     cout << endl;
     return 0;
-}*/
-
+}
+*/

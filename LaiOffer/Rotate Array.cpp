@@ -36,7 +36,7 @@ void helper_swap(int nums[], int left, int right){
     if(nums==NULL || left<0 || right<0 || left==right){
         return;
     }
-    while(left <= right){
+    while(left < right){
         int tmp = nums[left];
         nums[left++] = nums[right];
         nums[right--] = tmp;

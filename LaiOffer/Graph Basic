@@ -1,0 +1,19 @@
+DFS - depth first search
+
+BFS1 - breadth first search
+    according to level
+    shortest path? with graph satisfying equal weight for all edges.
+
+what kind of problem they are solving? similar things and different things
+    starting from one of the nodes in graph
+    traversing the graph following a special order, or more accurately speaking, following a special heuristic
+    they can both traverse all vertices in the graph
+    they can both find a path from a start vertex to a goal vertex
+    related to "state"(vertex) and "transition procedure"(path) - backtracking
+
+Implementation of DFS:
+    using recursion
+    using explicit stack
+
+Classical DFS
+    For a graph, traverse the nodes using depth first heuristic, and each node is only visited once.

@@ -16,15 +16,11 @@ using namespace std;
  Assumptions
  ​The root of the given binary tree is not null
  Examples
- -1
-
- /    \
-
- 2      11
-
- /    \
-
- 6    -14
+    -1
+   /    \
+  2      11
+        /   \
+       6     -14
 
  one example of paths could be -14 -> 11 -> -1 -> 2
 
@@ -53,7 +49,6 @@ using namespace std;
 
 /*
  Given a binary tree, find the maximum path sum. The path may start and end at any node in the tree
-
  上面一题的路径必须从叶子到叶子，这一题的路径可以从任意节点出发，任意节点结束
  */
 
@@ -89,6 +84,7 @@ int find_max_sum_from_node_to_node(BinaryTreeNode* root, int &path_sum){
 
     // 但是往上面传的话，就只用上传一条路径，所以我们要用max(left, right)
     // 注意 return to parents时只能返回left_cost或者right_cost，二选一。因为我们返回的是包括root在内的这一条路径
+    // 或者下面的只用一行表示 return max(left_chose, right_chose) + root->val;
     if(max(left_cost, right_cost) > 0)
         return max(left_cost, right_cost) + root->val;
     else

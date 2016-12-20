@@ -53,6 +53,7 @@ vector<string> permutation_withDup(string input) {
 
  */
 // 在for()循环之外定义一个hashset
+// 只要一个元素的permutation求出来了，在这个元素后面和这个元素相同的元素，我们完全都可以pass掉
 void helper_permutation_withDup(string& input, vector<string>& res, int index){
     if(index == input.size()){
         res.push_back(input);

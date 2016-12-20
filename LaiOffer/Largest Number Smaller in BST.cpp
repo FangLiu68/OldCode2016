@@ -16,7 +16,7 @@
      6     14
  largest number smaller than 1 is null
  largest number smaller than 10 is 6
- largest number smaller than 6 is 5
+ largest number smaller than 12 is 11
  */
 
 #include "Header.h"
@@ -29,6 +29,7 @@ int largestSmaller(BinaryTreeNode* root, int target){
     }
     BinaryTreeNode* res = NULL;
     while(root){
+        // 如果当前节点值不小于target，我们就让当前节点一直往左孩子方向走，keep res节点不变，直到当前节点走到NULL
         if(root->val >= target){
             root = root->left;
         }else{

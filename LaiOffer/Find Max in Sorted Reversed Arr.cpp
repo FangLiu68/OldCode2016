@@ -15,8 +15,8 @@
 
  {1, 3, 7, 6, 4, 2, 0}
 
- mid - 1     mid  mid + 1      decresing   right part ,   right = mid
- mid - 1    mid    mid + 1     incresing    left part     left = mid;
+ mid - 1    mid  mid + 1     decresing   right part ,   right = mid
+ mid - 1    mid  mid + 1     incresing    left part     left = mid;
  */
 
 int max_in_rotated_reversed_arr(vector<int> arr){

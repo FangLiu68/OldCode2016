@@ -40,7 +40,8 @@ using namespace std;
 // elements are always there.
 vector<int> k_smallest_in_unsorted_arr(vector<int> input, int k){
     vector<int> res;
-    if(input.empty()) return res;
+    if(input.empty() || k<=0) return res; // pay attention when k<=0
+    
     priority_queue<int> maxHeap;
     for(int i=0; i<input.size(); ++i){
         if(i < k){

@@ -18,6 +18,20 @@
  Method 2: sort, then check if there are two contigouse elements are the same
             runttime O(NlogN), space O(1)//if we ignore the sort algorithm space
  */
+bool containsDuplicate1(vector<int>& nums) {
+    if(nums.empty()) return false;
+    
+    set<int> st;
+    for(int i = 0; i < nums.size(); ++i){
+        if(st.find(nums[i]) == st.end()){
+            st.insert(nums[i]);
+        }else{
+            return true;
+        }
+    }
+    
+    return false;
+}
 
 bool containsDuplicate(vector<int>& nums) {
     if(nums.empty()) return false;
@@ -32,3 +46,4 @@ bool containsDuplicate(vector<int>& nums) {
     }
     return false;
 }
+

@@ -38,6 +38,10 @@
  所以对于BST的题写recursion rule的时候，前面要加一些限制条件，例如  根据已给值的关系判断什么时候访问左孩子（第一步压栈左孩子）
  */
 
+/* 注意，这里的逻辑关系
+    我们按照in order顺序遍历，首先push到res中的肯定是可选择区域里值最小
+    注意，都是if, 没有else if
+ */
 void helper(BinaryTreeNode* root, int min, int max, vector<int> &res){
     // base case
     if(root == NULL) return;

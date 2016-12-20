@@ -27,6 +27,8 @@ using namespace std;
 /*
  一直往下走到最下层的叶子节点，如果叶子节点的值为0，就删除，同时向上一层返回本层结果
  from bottom to top逐渐删除符合条件的节点
+ 
+ we want to delete 0s from bottom to top, so we do pos-order traversal
  */
 
 BinaryTreeNode* removeZero(BinaryTreeNode* root){

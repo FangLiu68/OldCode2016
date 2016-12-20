@@ -99,14 +99,14 @@ void mergeSort(int arr[], int len){
 /* 如果返回vector<int>，则中间需要的helper function里传入的是vector<int> &a, 但最终传入的vector<int> a的数值顺序不变，
  vector<int> solve(vector<int> a) {
     if(a.empty()) return vector<int>();
-    int* helper = new int[a.size()];
+    vector<int> helper(array.size());
     mergeSort(a, helper, 0, a.size()-1);
     return vector<int>(a.begin(), a.end());
  }
 
- void mergeSort(vector<int> &a, int helper[], int low, int high);
+ void mergeSort(vector<int> &a, vector<int> helper, int low, int high);
 
- void merge(vector<int> &a, int helper[], int low, int mid, int high);
+ void merge(vector<int> &a, vector<int> helper, int low, int mid, int high);
  */
 
 

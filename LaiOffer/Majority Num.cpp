@@ -37,7 +37,7 @@ int get_majorNum(vector<int> input){
             count++;
         }else{
             if(count == 0){
-                can = input[i];
+                can = input[i]; // can will be changed to input[i] as soon as count==0, so the result we are looking for is larger than 50% of whole array, cant be equal to 50%
                 count = 1;
             }else{
                 count--;

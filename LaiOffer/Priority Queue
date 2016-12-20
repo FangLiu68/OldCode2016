@@ -1,0 +1,12 @@
+when to use?
+1. best first search
+2. kth smallest/largest, smallest/largest k elements
+3. median, min/max
+
+For priority queue, the most basic operations
+O(1) get min for min heap/ get max for max heap
+O(logN) insert into heap
+O(logN) remove min from min heap/ remove max from max heap
+
+
+

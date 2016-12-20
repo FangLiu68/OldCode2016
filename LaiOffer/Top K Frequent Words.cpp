@@ -82,6 +82,7 @@ struct comp1{
     }
 };
 
+//========================================================
 vector<string> solve(vector<string> input, int k){
     vector<string> res;
     if(input.empty()){

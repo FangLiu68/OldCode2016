@@ -42,11 +42,13 @@ skipListNode* deepCopy(skipListNode* head){
     mp[head] = newHead;
     skipListNode* newCur = newHead; // cur pointer in the new copied list
     while(head){
+        // if "head" has a next pointer
         if(head->next){
+            // if the next pointer hasn't been put into map yet (key: next pointer)
             if(mp.find(head->next) == mp.end()){
-                mp[head->next] = new skipListNode(head->next->val);
+                mp[head->next] = new skipListNode(head->next->val); // we create a copy of the next pointer, and then put it inot map as value of the key
             }
-            newCur->next = mp[head->next];
+            newCur->next = mp[head->next]; // we connect the copy node and its copied next pointer
         }
         if(head->forward){
             if(mp.find(head->forward) == mp.end()){

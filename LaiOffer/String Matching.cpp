@@ -16,6 +16,14 @@
  Abbreviation matching
  // s1: student     original string
  // s2: s2d2t        pattern
+ 
+ NOTE:
+ input.substr(num) return the sub-string of input from index num to the end of input
+ if(num == input.size()) return empty string
+ if(num > input.size()) false alarm
+ eg. input = "abcde"
+     input.substr(0) = "abcde"; input.substr(2) = "cde"; input.substr(4) = "e"; input.substr(5) = ""; 
+     input.substr(6) false alarm
  */
 
 bool isDigit(char input) {

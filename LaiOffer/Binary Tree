@@ -1,0 +1,16 @@
+what is the usually way of thinking -- divide and conquer
+- root
+- root->left
+- root->right
+- order? in/post/pre order
+
+
+[return type] recur(TreeNode* root, [other arguments...]){
+
+}
+other arguments: pass down necessary information related to the DFS status
+return type: what need to be returned to the parent
+
+key point: clearly observe and define what should be the return value
+extra processing at root node
+do not forget handling the correct base case

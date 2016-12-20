@@ -30,12 +30,11 @@ int partition_arr(int arr[], int len, int k){
         }else if(arr[right] >= k){
             right--;
         }else{
-            swap(arr[left], arr[right]);
+            swap(arr[left++], arr[right--]);
         }
     }
     return left; // left左边 不包括arr[left]都是符合条件的(比k小的数)
 }
-
 
 
 /*

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Fang Liu. All rights reserved.
 //
 #include <iostream>
+#include <vector>
 using namespace std;
 
 /*
@@ -74,6 +75,10 @@ int partition(int arr[], int left, int right) {
     int leftBound = left;
     int rightBound = right - 1;
 
+    /*
+     1 3 2 8 9 5
+         r l
+     */
 
     // 保证leftBound的左边都是<pivot的值，rightBound的右边都是>=pivot的值，直到两者都不符合条件时，互换两者指向的元素，同时leftBound和rightBound都各自往前走
     while(leftBound <= rightBound){ // NOTE: left <= right
@@ -108,7 +113,57 @@ void quickSort(int array[], int len) {
     quickSort(array, 0, len - 1);
 }
 
+//============same as before, just use vector
+void helper_swap(int& i, int& j);
+int partition1(vector<int>& input, int left, int right);
+void quicksort1(vector<int>& input, int left, int right);
 
+vector<int> quickSort(vector<int> array) {
+    if(array.empty()) return vector<int>();
+    
+    quicksort1(array, 0, array.size()-1);
+    return vector<int>(array.begin(), array.end());
+}
+
+// 注意，如果我们用vector传入input的话，都要传入引用&
+void quicksort1(vector<int>& input, int left, int right){
+    if(left >= right) return;
+    
+    int index = partition1(input, left, right);
+    
+    quicksort1(input, left, index-1);
+    quicksort1(input, index+1, right);
+}
+
+int partition1(vector<int>& input, int left, int right){
+    int pivot_index = left + (right-left)/2;
+    int pivot_value = input[pivot_index];
+    
+    helper_swap(input[pivot_index], input[right]);
+    
+    int left_bound = left;
+    int right_bound = right-1;
+    
+    while(left_bound <= right_bound){
+        if(input[left_bound] < pivot_value){
+            left_bound++;
+        }else if(input[right_bound] >= pivot_value){
+            right_bound--;
+        }else{
+            helper_swap(input[left_bound++], input[right_bound--]);
+        }
+    }
+    
+    helper_swap(input[left_bound], input[right]);
+    
+    return left_bound;
+}
+
+void helper_swap(int& i, int& j){
+    int temp = i;
+    i = j;
+    j = temp;
+}
 
 //====================================================================================================
 // 方法2

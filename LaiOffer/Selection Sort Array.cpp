@@ -21,12 +21,19 @@
 
 #include "Header.h"
 
+void swap(int& i, int& j){
+    int temp = i;
+    i = j;
+    j = temp;
+}
+
 // O(N^2) runtime, O(1) space
 void selectionSort(int arr[], int len){
     if(arr == NULL || len <= 0){
         return;
     }
-
+    
+    // 从i开始往后找，找到具有最小值的index
     for(int i = 0; i < len-1; ++i){
         int min_index = i;
 
@@ -40,6 +47,7 @@ void selectionSort(int arr[], int len){
     }
 }
 
+//==============================================
 // 传入&a,则改变原vector序列
 void selection_sort2(vector<int>& a) {
     if(a.size()<=1) return;

@@ -8,6 +8,15 @@
 
 // 	Given an array with integers, move all “0s” to the right-end of the array.
 
+/*
+ Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements. 
+ For example, given nums = [0,1,0,3,12], after calling your function, nums should be [1,3,12,0,0].
+ 
+ Note:
+ 1. you must do this in-place without making a copy of the array
+ 2. minimize the total number of operatioins.
+ */
+
 #include "Header.h"
 
 /*
@@ -24,6 +33,44 @@
  3. 截止的条件是什么
 
  */
+
+// 如果要保持非0元素的相对顺序. O(N)
+int moveKeepOrder(vector<int>& input){
+    if(input.empty()) return INT_MIN;
+    int slow = 0;
+    int fast = 0;
+    while(fast < input.size()){
+        if(input[fast] != 0){
+            input[slow++] = input[fast++];
+        }else{
+            fast++;
+        }
+    }
+    int res = slow;
+    while(slow < input.size()){
+        input[slow++] = 0;
+    }
+    return res; // 返回的res的左边所有数字都是非零（不包括input[res]）
+}
+
+// 保持相对顺序. O(N)
+void moveZeroes(vector<int>& nums) {
+    if(nums.empty()){
+        return;
+    }
+    
+    int index = 0;
+    for(int i=0; i<nums.size(); ++i){
+        if(nums[i] != 0){
+            nums[index++] = nums[i];
+        }
+    }
+    
+    while(index < nums.size()){
+        nums[index++] = 0;
+    }
+}
+
 
 // 两个挡板，三个区间，相向而行
 
@@ -58,28 +105,9 @@ int remove_zero_to_right_quicker(int arr[], int len){
     return left;
 }
 
-// 如果要保持非0元素的相对顺序
-int moveKeepOrder(vector<int>& input){
-    if(input.empty()) return INT_MIN;
-    int slow = 0;
-    int fast = 0;
-    while(fast < input.size()){
-        if(input[fast] != 0){
-            input[slow++] = input[fast++];
-        }else{
-            fast++;
-        }
-    }
-    int res = slow;
-    while(slow < input.size()){
-        input[slow++] = 0;
-    }
-    return res; // 返回的res的左边所有数字都是非零（不包括input[res]）
-}
-
 
 /*
-int main(){
+ int main(){
     vector<int> input = {1, 0, 2, 0, -4};
     cout << moveKeepOrder(input) << endl;
     for(int i=0; i<input.size(); ++i){

@@ -14,27 +14,36 @@
 
 #include "Header.h"
 
-// 看这个做法，方便易懂
-// 如果当前char没有没有遇到过，放在set里，同时right++，之后更新res
-// 如果char已经遇到过，那么此时input[right]肯定和input[left]相同，就把input[left]从set内移除，同时left++
-int longest_substr_no_repeated_char_lengh(string input) {
+/*
+ slow, fast all start from index 0
+ [slow, fast) contain all the distinct chars
+ use a container to hold all unrepeated chars
+ and use one counter to keep track the max length between (fast-slow)
+ 
+ when fast find un-repeated char, we push to set, and fast++
+ when fast find repeated char, we pop input[slow] out of the container, at the meantime slow++, we keep doing this until slow move to the repeated char(which fast is pointing to)'s next char
+ */
+int longest_substr_no_repeated_charI(string input){
     if(input.size() <= 1){
         return input.size();
     }
-    int left = 0;
-    int right = 0;
+    
+    int slow = 0;
+    int fast = 0;
+    set<char> no_dup;
     int res = 0;
-    set<char> s;
-    while(right < input.size()){
-        if(s.find(input[right]) != s.end()){
-            s.erase(input[left++]);
+    
+    while(fast < input.size()){
+        if(no_dup.find(input[fast]) == no_dup.end()){ // input[fast] is not in the set
+            no_dup.insert(input[fast++]);
+            res = max(res, fast-slow); // 此时right已经+1，所以长度正好是所需要结果
         }else{
-            s.insert(input[right++]);
-            res = max(res, right - left); // 此时right已经+1，所以长度正好是所需要结果
+            no_dup.erase(input[slow++]);
         }
     }
     return res;
 }
+
 
 string longest_substr_no_repeated_char(string input){
     if(input.size() <= 1){

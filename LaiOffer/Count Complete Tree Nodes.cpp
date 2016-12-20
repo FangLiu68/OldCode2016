@@ -23,38 +23,39 @@ using namespace std;
  2) get the height of right-most part
  3) when they are equal, the # of nodes = 2^h -1
  4) when they are not equal, recursively get # of nodes from left&right sub-trees
+     1
+  2     3
+ 做2的幂时不要用Math.pow，这样会超时。用1<<height这个方法来得到2的幂
  */
 
-int getLeftHeight(BinaryTreeNode* node){
-    if(node == NULL) return 0;
+int left_height(BinaryTreeNode* root){
     int res = 0;
-    while(node->left){
+    while(root){
         res++;
-        node = node->left;
+        root = root->left;
     }
     return res;
 }
 
-int getRightHeight(BinaryTreeNode* node){
-    if(node == NULL) return 0;
+int right_height(BinaryTreeNode* root){
     int res = 0;
-    while(node->right){
+    while(root){
         res++;
-        node = node->right;
+        root = root->right;
     }
     return res;
 }
 
 int countNodes(BinaryTreeNode* root) {
-    if(root == NULL){
-        return 0;
-    }
-    int leftHeight = getLeftHeight(root) ;
-    int rightHeight = getRightHeight(root) ;
-    if(leftHeight == rightHeight){
-        return (2<<(leftHeight)) - 1; // 2^(leftHeight)-1
+    if(root == NULL) return 0;
+    
+    int left = left_height(root);
+    int right = right_height(root);
+    
+    if(left == right){
+        return (1 << left) - 1; // 如果两个深度一样，返回2^h-1
     }else{
-        return countNodes(root->left) + countNodes(root->right) + 1;
+        return countNodes(root->left) + countNodes(root->right) + 1; // 否则返回左子树右子树节点和加1
     }
 }
 

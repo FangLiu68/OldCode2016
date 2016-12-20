@@ -40,3 +40,4 @@ ListNode* merge(ListNode* one, ListNode* two) {
 
     return dummy.next;
 }
+

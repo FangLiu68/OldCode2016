@@ -46,8 +46,12 @@ int search_in_rotated_sorted_arr_has_dup(int input[], int len, int target) {
             else right = mid-1;
         }
 
-        else{ // input[left] == input[mid]
-            return helper(input, len, target);
+        else if(input[left] == input[mid]){
+            if(input[left] != input[right]){
+                left = mid + 1;
+            }else {
+                return helper(input, len, target);
+            }
         }
     }
     return -1;

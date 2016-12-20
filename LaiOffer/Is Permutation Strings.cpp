@@ -7,8 +7,57 @@
 //
 
 // Given two strings, decide if one is a permutation of the other.
+/*
+ Given two strings s and t, write a function to determine if t is an anagram of s.
+ 
+ For example,
+ s = "anagram", t = "nagaram", return true.
+ s = "rat", t = "car", return false.
+ 
+ Note:
+ You may assume the string contains only lowercase alphabets.
+ 
+ Follow up:
+ What if the inputs contain unicode characters? How would you adapt your solution to such case?
+ */
 
 #include "Header.h"
+
+// time O(n), space O(n)
+bool isAnagram(string s, string t) {
+    if(s.size() != t.size()) return false;
+    unordered_map<char, int> mp;
+    for(int i=0; i<s.size(); ++i){
+        if(mp.find(s[i]) == mp.end()){
+            mp[s[i]] = 1;
+        }else{
+            mp[s[i]]++;
+        }
+    }
+    
+    for(int i=0; i<t.size(); ++i){
+        if(mp.find(t[i]) == mp.end()) return false;
+        mp[t[i]]--;
+        if(mp[t[i]] < 0) return false;
+    }
+    
+    return true;
+}
+
+// time O(n), space O(1)
+bool isAnagram1(string s, string t) {
+    if(s.size() != t.size()) return false;
+    vector<int> mp(256, 0);
+    for(int i=0; i<s.size(); ++i){
+        mp[s[i]]++;
+    }
+    for(int i=0; i<t.size(); ++i){
+        mp[t[i]]--;
+        if(mp[t[i]] < 0) return false;
+    }
+    return true;
+}
+
 
 // assume all chars are ASCII
 // runtime O(2N)

@@ -18,7 +18,8 @@
 
 #include "Header.h"
 
-
+// recursive way to solve this issue
+// 大班教案P75
 ListNode* reverse_pair(ListNode* head){
     // base case
     if(head == NULL || head->next == NULL) return head;
@@ -29,5 +30,6 @@ ListNode* reverse_pair(ListNode* head){
 
     pNext->next = cur;
     cur->next = nodeN;
-    return pNext;
+    
+    return pNext; // 向上传的节点就是新的头结点
 }

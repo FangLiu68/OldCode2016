@@ -9,12 +9,52 @@
 /*
  Find distance between two given keys of a Binary Tree
  Find the distance between two nodes in a binary tree, no parent pointers are given. Distance between two nodes is the minimum number of edges to be traversed to reach one node from other.
+ 
+         7
+      /     \
+     4       10
+    /  \     /  \
+   1    5   9    13
+       /           \
+      3            18
+ 
+ [3, 9] -> 5
+ [5, 1] -> 2
+ [10, 18] -> 2
+ 
+ return:
+ 0 - not found any nodes of one or two
+ positive - root is one of One/Two, and not found the other one in its subtree -level of itself
+          - if two nodes are all found, return the distance
+ 
  */
 
 #include "BinaryTree.h"
 #include <iostream>
 using namespace std;
 
+// 闫老师的答案
+int getDis(BinaryTreeNode* root, BinaryTreeNode* one, BinaryTreeNode* two, int level){
+    if(root == NULL) return 0;
+    
+    int left = getDis(root->left, one, two, level + 1);
+    int right = getDis(root->right, one, two, level + 1);
+    
+    if(root == one || root == two){
+        if(left == 0 || right == 0){
+            return level;
+        }
+        return max(left, right) - level;
+    }
+    
+    if(left > 0 && right > 0){
+        return left - level + right - level;
+    }
+    
+    return left > 0? left : right;
+}
+
+//==================================================
 BinaryTreeNode* helper_getLCA(BinaryTreeNode* root, BinaryTreeNode* node1, BinaryTreeNode* node2);
 int get_diff_len(BinaryTreeNode* high, BinaryTreeNode* low);
 int helper_get_height1(BinaryTreeNode* node);

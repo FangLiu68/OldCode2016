@@ -60,7 +60,7 @@ int findMin_dup(vector<int>& nums) {
             right = mid;
         }else if(nums[mid] > nums[right]){
             left = mid;
-        }else{
+        }else{ // nums[mid] == nums[right]
             right--;
         }
     }

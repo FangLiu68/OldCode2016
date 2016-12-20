@@ -37,11 +37,10 @@ ListNode* reverseList_recur(ListNode* head){
     ListNode* nodeN = reverseList_recur(next_node); // recursion的是next_node，那么由base case判断条件得知，当next_node为最后一个节点是时候，触底反弹，返回当前node(就是这个next_node).而cur_node一直都是next_node之前的那个node
 
     // 这两行current状态要做的事情。nodeN从最后一步一直往前传，但在current reverse指针的时候nodeN没有参与，我们只是不断把nodeN的值传过来而已
-    // 下面这俩的顺序不能反！否则会出错，还没仔细看为啥
     next_node->next = cur_node;
     cur_node->next = NULL;
 
-    return nodeN;
+    return nodeN; // 最后一步的return，就是return给上一层所返回的内容
 }
 
 ListNode* reverseList_iter(ListNode* head) {

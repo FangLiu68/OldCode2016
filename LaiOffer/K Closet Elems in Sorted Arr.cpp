@@ -26,22 +26,22 @@ int helper_close(vector<int> input, int target);
 vector<int> K_close_elems_to_target(vector<int> input, int target, int k) {
     vector<int> res(k);
     if(input.empty() || k==0) return res;
-    int close = helper_close(input, target);
-    int smaller = close-1;
-    int bigger = close+1;
-    res[0] = input[close];
+    int index_close = helper_close(input, target);
+    int index_smaller = index_close-1;
+    int index_bigger = index_close+1;
+    res[0] = input[index_close];
     
     for(int i=1; i<k; i++){
-        if(smaller>=0 && bigger<input.size()){
-            if(target-input[smaller] <= input[bigger]-target)
-                res[i] = input[smaller--];
+        if(index_smaller>=0 && index_bigger<input.size()){
+            if(target-input[index_smaller] <= input[index_bigger]-target)
+                res[i] = input[index_smaller--];
             else
-                res[i] = input[bigger++];
+                res[i] = input[index_bigger++];
         }
-        else if(bigger >= input.size())
-            res[i] = input[smaller--];
-        else if(smaller < 0)
-            res[i]= input[bigger++];
+        else if(index_bigger >= input.size())
+            res[i] = input[index_smaller--];
+        else if(index_smaller < 0)
+            res[i]= input[index_bigger++];
     }
     return res;
 }

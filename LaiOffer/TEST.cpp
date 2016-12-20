@@ -1,36 +1,33 @@
-#include "BinaryTree.h"
-#include <iostream>
-#include <string>
-using namespace std;
+#include "Header.h"
 
-/*
-void reverse(string& str){
-    if(str.empty()) return;
-    int start = 0;
-    int end = str.size()-1;
-    while(start < end){
-        char a = str[start];
-        str[start] = str[end];
-        str[end] = a;
-        start++, end--;
+
+// remove elements
+int test_removeElements(vector<int> input, int val){
+    if(input.empty()){
+        return -1;
     }
-}
-
-void swap(string& str, int i, int j){
-    char a = 
-}
-
-void reverse_recur(string& str, int start, int end){
-    if(str.empty() || start==end){
-        return; // base case
+    
+    int left = 0;
+    int right = input.size() - 1;
+    
+    while(left <= right){
+        if(input[left] == val){
+            left++;
+        }else if(input[right] != val){
+            right--;
+        }else{
+            swap(input[left++], input[right--]);
+        }
     }
-
+    
+    return left;
 }
-*/
-/*
+
 int main(){
-    string str = "apple";
-    reverse(str);
-    cout << str << endl;
+    vector<int> input = {2, 3, 4, 2, 1, 2, 5};
+    // 3, 4, 1, 5, 2, 2, 2,
+    int val = 2;
+    int res = test_removeElements(input, val);
+    cout << res << endl;
     return 0;
-}*/
+}

@@ -18,6 +18,7 @@
 #include <stack>
 #include <queue>
 #include <iostream>
+#include <sstream>
 #include "LinkedList.h"
 #include "BinaryTree.h"
 using namespace std;

@@ -36,3 +36,21 @@ vector<int> remove_dup_in_arr_II(vector<int>& input) {
     input.erase(input.begin()+index, input.end());
     return input;
 }
+
+// [0, index) are what we want, we confirm nums[index] each time after we done comparing its value with nums[i]
+int removeDuplicates(vector<int>& nums) {
+    //if(nums.empty()) return 0;
+    
+    if(nums.size() <= 2){
+        return nums.size();
+    }
+    
+    int index = 2;
+    for(int i=2; i<nums.size(); ++i){
+        if(nums[i] != nums[index-2]){
+            nums[index++] = nums[i];
+        }
+    }
+    
+    return index;
+}

@@ -9,9 +9,9 @@
 /*
  Get the list of list of keys in a given binary tree layer by layer. Each layer is represented by a list of keys and the keys are traversed from left to right.
  Examples
- 5
- /    \
- 3        8
+      5
+    /    \
+   3        8
  /   \        \
  1     4        11
  the result is [ [5], [3, 8], [1, 4, 11] ]
@@ -89,6 +89,28 @@ void print_levelOrder(BinaryTreeNode* root){
     }
     cout << endl;
 }
+
+/*
+ use DFS
+ for each of the node, we need to know the node's level
+ key point: how do we know the list of the current level exists?
+    if not exists? (the node's level == result.size()) add a new list in the result lists
+ for each level, the node on left is always traversed before the nodes on right
+ */
+void levelOrder_DFS(vector<vector<int>> res, BinaryTreeNode* cur, BinaryTreeNode* root, int level){
+    if(root == NULL) return;
+    if(res.size() == level){
+        vector<int> new_level;
+        res.push_back(new_level);
+    }
+    
+    res[level].push_back(cur->val);
+    
+    levelOrder_DFS(res, cur, root->left, level+1);
+    levelOrder_DFS(res, cur, root->right, level+1);
+}
+
+
 /*
 int main(){
     BinaryTreeNode* root = new BinaryTreeNode(5);

@@ -34,6 +34,7 @@ string deDupIII(string s) {
             fast++;
             flag = true;
         }else if(flag == true){ // 如果slow和fast不同且slow代表的字符块没有完结，就需要让他完结（方法是将fast的值覆盖到slow），同时将flag设置回false（因为此时slow的字符块已经完结）
+            // slow代表的之前的重复字符一个都不能留，所以当我们把s[fast]放到s[slow]的位置时，我们不知道这个新的字符是否可能将会继续重复，因为fast还没有scan到。所以fast++，而slow不能++。同时，因为flag代表的是slow之前的字符是否重复，而既然我们已经用新的fast将旧的slow覆盖了，就需要将flag设置为false。
             s[slow] = s[fast++];
             flag = false;
         }else{ // 如果slow和fast不同且slow代表的字符块已经完结，直接将fast覆盖到++slow即可
@@ -42,6 +43,7 @@ string deDupIII(string s) {
     }
     // flag设置成true的情况只可能是slow一直等于fast，直到fast出界
     // 即如果s=="aaaaa"，那么slow仍为0 不加1
+    // 即如果flag==false，表明slow代表的之前的字符已经完结，应该+1
     if(!flag) slow++;
     return s.substr(0, slow);
 }

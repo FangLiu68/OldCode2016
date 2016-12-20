@@ -14,7 +14,29 @@
 #include <iostream>
 using namespace std;
 
-// 左右两个挡板
+// if the order of nodes could be changed. O(logN)
+int removeElement(vector<int>& nums, int val) {
+    if(nums.empty()) return 0;
+    
+    int left = 0;
+    int right = nums.size() - 1;
+    
+    while(left <= right){
+        if(nums[left] != val){
+            left++;
+        }else if(nums[right] == val){
+            right--;
+        }else{
+            nums[left] = nums[right];
+            left++, right--;
+        }
+    }
+    
+    return left;
+}
+
+
+// 左右两个挡板 O(N)
 // cur的左边（不包括A[cur]）都是符合条件的结果。
 // runner的右边（不包括A[runner]）都是还没有探索到的地方
 int removeElement(int A[], int n, int elem) {

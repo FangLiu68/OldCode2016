@@ -28,6 +28,11 @@ using namespace std;
  如果先全部在map中放好，由于3+3=6，对第一个元素3找剩余数时，我们以为第一个遇到的3就是剩余数，于是直接返回（1，1），错误结果。
  一定要先寻找gap，再往map里面放入配对。
  记住：map里的value是arr[i]的Index，即i。如果我们都放的是gap的话，到时候找不出这个gap的index是多少。
+ 
+ 1 0
+ 3 1
+ 2 2
+ 
  */
 // hash. 用map存储每个数的下标。time complexity O(N), space complexity O(N)
 pair<int, int> twoSumOnePair(vector<int> &numbers, int target) {
@@ -40,7 +45,7 @@ pair<int, int> twoSumOnePair(vector<int> &numbers, int target) {
             res.first = mp[gap]+1;
             res.second = i+1;
         }
-        mp[numbers[i]] = i;
+        mp[numbers[i]] = i; // 注意这里的顺序，我们一定要先在Map中查找gap，再把当前元素和他的Index放入Map中。这样可以避免当gap和当前元素的值相同时，我们把当前元素的值误以为gap
     }
     return res;
 }

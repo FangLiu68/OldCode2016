@@ -38,7 +38,7 @@ ListNode* partition_list(ListNode* head, int target) {
         }
         cur = cur->next;
     }
-    big->next = NULL; // de-link the big partition from the list
+    big->next = NULL; // de-link the big partition from the list 不可少
     small->next = dummy2.next; // connect two partitions
     return dummy1.next;
 }
